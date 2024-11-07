@@ -113,6 +113,8 @@ public class Teleporter : MonoBehaviour
         //This line disables the room the players came from to save performance
         //This line must be the last line in the function
         currentRoom.SetActive(false);
+
+        nextRoom.GetComponent<Room>().StartSpawning();
     }
 
     private void StartTeleport(){

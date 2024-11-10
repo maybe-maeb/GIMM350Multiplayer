@@ -13,13 +13,13 @@ public class Player2Controller : MonoBehaviour
     public InputActionReference p2movement;
     public InputActionReference p2attack;
     public Animator animator;
+    public GameObject attackCollide;
     // Start is called before the first frame update
     void Start()
     {
+        attackCollide.SetActive(false);
     }
     
-
-
     // Update is called once per frame
     void Update()
     {
@@ -28,6 +28,8 @@ public class Player2Controller : MonoBehaviour
         if (p2attack.action.triggered)
         {
             Debug.Log("Attack");
+            animator.SetTrigger("attack");
+            //animator.Play("AttackState");
             PlayerAttack();
         }
     }
@@ -41,6 +43,8 @@ public class Player2Controller : MonoBehaviour
 
     void PlayerAttack()
     {
-        animator.SetBool("isAttacking", true);
+        //animator.SetBool("isAttacking", true);
+        Debug.Log("Opening player attack");
+        attackCollide.SetActive(true);
     }
 }

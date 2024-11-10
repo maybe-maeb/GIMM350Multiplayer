@@ -13,11 +13,12 @@ public class Player1Controller : MonoBehaviour
     public InputActionReference movement;
     public InputActionReference attack;
     public Animator animator;
+    public GameObject attackCollide;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        attackCollide.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class Player1Controller : MonoBehaviour
             Debug.Log("Attack");
             animator.SetTrigger("attack");
             //animator.Play("AttackState");
-            // PlayerAttack();
+            PlayerAttack();
         }
     }
 
@@ -44,7 +45,9 @@ public class Player1Controller : MonoBehaviour
 
     void PlayerAttack()
     {
-        animator.SetBool("isAttacking", true);
+        //animator.SetBool("isAttacking", true);
+        Debug.Log("Opening player attack");
+        attackCollide.SetActive(true);
     }
 }
     

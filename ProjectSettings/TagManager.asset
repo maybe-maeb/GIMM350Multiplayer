@@ -9,6 +9,7 @@ TagManager:
   - Players/Player2
   - Rooms/PlayerSpawnPosition
   - Rooms/EnemySpawnPosition
+  - Fireball
   layers:
   - Default
   - TransparentFX

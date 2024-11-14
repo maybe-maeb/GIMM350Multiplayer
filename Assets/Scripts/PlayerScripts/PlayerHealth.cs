@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour
         else otherPlayer = GameObject.FindGameObjectWithTag("Players/Player1").GetComponent<PlayerHealth>();
     }
 
-    void TakeDamage(float damage){
+    public void TakeDamage(float damage){
         //Decrease its current health by the damage taken
         currentHealth -= damage;
 

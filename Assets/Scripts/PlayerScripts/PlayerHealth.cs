@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float baseHealth;
 
     //How much health they currently have
-    private float currentHealth;
+    [SerializeField] private float currentHealth;
     
     [Tooltip("The effect to create when this player takes damage.")]
     [SerializeField] private GameObject hitEffect;

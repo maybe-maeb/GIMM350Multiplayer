@@ -14,9 +14,10 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter (Collider col)
     {
-        if (col.gameObject.tag == "Players")
+        print("hit " + col.transform.name);
+        if (col.gameObject.tag == "Players/Player1" || col.gameObject.tag == "Players/Player2")
         {
-            col.gameObject.GetComponent<PlayerHealth>().TakeDamage(-bulletDamage);
+            col.gameObject.GetComponent<PlayerHealth>().TakeDamage(bulletDamage);
             Destroy(gameObject);
         }
 

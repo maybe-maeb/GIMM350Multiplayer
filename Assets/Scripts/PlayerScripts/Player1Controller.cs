@@ -14,6 +14,7 @@ public class Player1Controller : MonoBehaviour
     public InputActionReference attack;
     public Animator animator;
     public GameObject attackCollide;
+    public float attackDuration = 0.15f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class Player1Controller : MonoBehaviour
             Debug.Log("Attack");
             animator.SetTrigger("attack");
             //animator.Play("AttackState");
-            PlayerAttack();
+            StartCoroutine("PlayerAttack");
         }
     }
 
@@ -43,11 +44,14 @@ public class Player1Controller : MonoBehaviour
         playerOne.transform.Rotate(Vector3.up * movementDirection.x * rotationSpeed * Time.deltaTime);
     }
 
-    void PlayerAttack()
+    IEnumerator PlayerAttack()
     {
         //animator.SetBool("isAttacking", true);
-        Debug.Log("Opening player attack");
+        Debug.Log("Starting player attack");
         attackCollide.SetActive(true);
+        yield return new WaitForSeconds(attackDuration);
+        attackCollide.SetActive(false);
+        Debug.Log("Ending player attack");
     }
 }
     

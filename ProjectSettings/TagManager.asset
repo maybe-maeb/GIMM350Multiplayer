@@ -12,6 +12,8 @@ TagManager:
   - Fireball
   - PlayerAttackHitbox
   - Enemy
+  - GameOverMenu
+  - GameWinMenu
   layers:
   - Default
   - TransparentFX

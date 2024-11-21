@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+   
      [Header("Health & Damage")]
     [Tooltip("The amount of health the player spawns with.")]
     [SerializeField] private float baseHealth;
@@ -19,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
 
     public bool isPlayerOne;
     public PlayerHealth otherPlayer;
+    public static event Action OnPlayerDeath;
 
     void Start()
     {
@@ -34,7 +37,13 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
 
         //If its health is less than 0, die
-        if (currentHealth <= 0) Die();
+        if (currentHealth <= 0) 
+        { 
+            Die(); 
+            OnPlayerDeath?.Invoke();
+        }
+       
+
 
         //Create a hit effect and destroy it after a second
         GameObject hitFX = Instantiate(hitEffect, transform.position, Quaternion.identity);
@@ -48,6 +57,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (otherPlayer == null) {
             Debug.Log("Both players dead! Game lose logic here.");
+            GameObject gameOverMenu = GameObject.FindGameObjectWithTag("GameOverMenu");
+            gameOverMenu.SetActive(true);
         }
 
         //Destroy the enemy

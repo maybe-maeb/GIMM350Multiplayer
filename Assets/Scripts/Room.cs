@@ -52,5 +52,8 @@ public class Room : MonoBehaviour
             teleporter.SetActive(true);
         }
         roomStarted = false;
+
+        GameObject gameWinMenu = GameObject.FindGameObjectWithTag("GameWinMenu");
+        gameWinMenu.SetActive(true);
     }
 }

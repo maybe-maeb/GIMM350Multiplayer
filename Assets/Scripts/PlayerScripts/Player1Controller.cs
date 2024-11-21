@@ -53,5 +53,11 @@ public class Player1Controller : MonoBehaviour
         attackCollide.SetActive(false);
         Debug.Log("Ending player attack");
     }
+
+    //private void DisablePlayerMovement()
+    //{
+      //  animator.enabled = false;
+
+    //}
 }
     

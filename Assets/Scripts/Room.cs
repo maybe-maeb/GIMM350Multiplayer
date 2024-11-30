@@ -47,13 +47,17 @@ public class Room : MonoBehaviour
     }
 
     void FinishRoom(){
-        if (isLastRoom) Debug.Log("Game win! Put game win logic here.");
+        if (isLastRoom) 
+        {
+            Debug.Log("Game win! Put game win logic here.");
+            GameObject gameWinMenu = GameObject.FindGameObjectWithTag("GameWinMenu");
+            gameWinMenu.transform.GetChild(0).gameObject.SetActive(true);
+            gameWinMenu.transform.GetChild(1).gameObject.SetActive(true);
+            gameWinMenu.transform.GetChild(2).gameObject.SetActive(true);
+        }
         else {
             teleporter.SetActive(true);
         }
         roomStarted = false;
-
-        GameObject gameWinMenu = GameObject.FindGameObjectWithTag("GameWinMenu");
-        gameWinMenu.SetActive(true);
     }
 }

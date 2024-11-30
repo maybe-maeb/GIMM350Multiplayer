@@ -57,8 +57,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (otherPlayer == null) {
             Debug.Log("Both players dead! Game lose logic here.");
-            GameObject gameOverMenu = GameObject.FindGameObjectWithTag("GameOverMenu");
-            gameOverMenu.SetActive(true);
+            GameObject goMenu = GameObject.FindGameObjectWithTag("GameOverMenu");
+            goMenu.transform.GetChild(0).gameObject.SetActive(true);
+            goMenu.transform.GetChild(1).gameObject.SetActive(true);
+            goMenu.transform.GetChild(2).gameObject.SetActive(true);
         }
 
         //Destroy the enemy

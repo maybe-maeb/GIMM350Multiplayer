@@ -29,6 +29,10 @@ public class EnemyFight : EnemyState
         esm.FindNearestPlayer(); //look for nearest player to your location
         if (esm.nearestPlayer != null) //if a player exists
         { 
+            Vector3 direction = esm.nearestPlayer.position - esm.enemy.transform.position; //turn value
+            direction.y = 0; //prevents weird rotations
+            esm.enemy.transform.rotation = Quaternion.LookRotation(direction); //look over here!
+
             esm.enemy.destination = esm.nearestPlayer.position; //move towards them
             
             if (esm.reloading == false) //if you aren't reloading

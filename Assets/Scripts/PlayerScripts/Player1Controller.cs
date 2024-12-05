@@ -37,11 +37,21 @@ public class Player1Controller : MonoBehaviour
     }
 
     void PlayerMovement()
+
+
     {
         //animator.SetBool("isWalking", true);
         movementDirection = movement.action.ReadValue<Vector2>();
-        playerOne.transform.Translate(Vector3.forward * movementDirection.y * movementSpeed * Time.deltaTime);
-        playerOne.transform.Rotate(Vector3.up * movementDirection.x * rotationSpeed * Time.deltaTime);
+        movementDirection = new Vector3(movementDirection.x, 0, movementDirection.y).normalized;
+        if(movementDirection.magnitude >= 0.2f)
+        {
+            Vector3 targetDir = new Vector3(movementDirection.x, 0, movementDirection.z).normalized;
+            Vector3 newDir = Vector3.RotateTowards(playerOne.transform.forward, targetDir, rotationSpeed * Time.deltaTime, 0.0f);
+            playerOne.transform.rotation = Quaternion.LookRotation(newDir);
+            playerOne.transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+        }
+       /* playerOne.transform.Translate(Vector3.forward * movementDirection.y * movementSpeed * Time.deltaTime);
+        playerOne.transform.Rotate(Vector3.up * movementDirection.x * rotationSpeed * Time.deltaTime);*/
     }
 
     IEnumerator PlayerAttack()

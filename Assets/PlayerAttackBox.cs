@@ -9,6 +9,7 @@ public class PlayerAttackBox : MonoBehaviour
     void OnTriggerEnter(Collider col){
         if (col.transform.CompareTag("Enemy")){
             col.gameObject.GetComponent<Enemy>().TakeDamage(damageToDeal); // Change the damage value to your liking
+            this.gameObject.SetActive(false);
         }
     }
 }
